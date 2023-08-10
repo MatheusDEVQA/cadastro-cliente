@@ -1,15 +1,26 @@
 package com.cadastrocliente.cadastroclienteapp.model.entity;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import lombok.*;
 
-import javax.annotation.processing.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Getter
 public class Cliente {
 
 
-
+    @Id
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private long id;
 
     @NotBlank(message = " obrigatório")

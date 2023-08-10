@@ -3,7 +3,7 @@ package com.cadastrocliente.cadastroclienteapp.controller;
 import com.cadastrocliente.cadastroclienteapp.model.dto.ClienteDTO;
 import com.cadastrocliente.cadastroclienteapp.model.entity.Cliente;
 import com.cadastrocliente.cadastroclienteapp.service.ClienteService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
