@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,14 +20,14 @@ public class ClienteController {
     private ModelMapper modelMapper;
 
 
-    public ClienteController(ClienteService service, ModelMapper modelMapper){
+    public ClienteController(ClienteService service, ModelMapper modelMapper) {
         this.service = service;
         this.modelMapper = modelMapper;
     }
 
     @PostMapping("/cliente")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDTO createCliente(@RequestBody @Valid ClienteDTO cliente){
+    public ClienteDTO createCliente(@RequestBody @Valid ClienteDTO cliente) {
         Cliente entity = modelMapper.map(cliente, Cliente.class);
         entity = service.save(entity);
         return modelMapper.map(entity, ClienteDTO.class);
@@ -35,9 +36,19 @@ public class ClienteController {
 
     @GetMapping("/clientes")
     @ResponseStatus(HttpStatus.OK)
-    public List<ClienteDTO> getCliente (){
+    public List<ClienteDTO> getCliente() {
         List<Cliente> clienteList = this.service.getList();
         return clienteList.stream().map(cliente -> modelMapper.map(cliente, ClienteDTO.class)).collect(Collectors.toList());
+
+    }
+
+    @GetMapping("/clientes/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ClienteDTO getClienteId (@PathVariable long id){
+        return service
+                .getById(id)
+                .map(cliente -> modelMapper.map(cliente, ClienteDTO.class))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     }
 }

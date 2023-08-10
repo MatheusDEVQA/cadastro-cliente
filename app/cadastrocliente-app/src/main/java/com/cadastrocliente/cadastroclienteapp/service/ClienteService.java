@@ -3,6 +3,7 @@ package com.cadastrocliente.cadastroclienteapp.service;
 import com.cadastrocliente.cadastroclienteapp.model.entity.Cliente;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClienteService {
 
@@ -11,6 +12,7 @@ public interface ClienteService {
     List<Cliente> getList();
 
 
+    Optional<Cliente> getById(long id);
 
 
 }
