@@ -63,6 +63,10 @@
 			<artifactId>httpcore</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
