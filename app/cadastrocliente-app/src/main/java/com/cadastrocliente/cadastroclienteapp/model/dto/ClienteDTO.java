@@ -1,10 +1,15 @@
 package com.cadastrocliente.cadastroclienteapp.model.dto;
 
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class ClienteDTO {
@@ -18,6 +23,7 @@ public class ClienteDTO {
     private String ultimoNome;
 
     @NotBlank(message = "o e-mail é obrigatório")
+    @Email(message = "Formato incorreto")
     private String usuario;
 
     @NotBlank(message = " obrigatória")

@@ -6,6 +6,7 @@ import com.cadastrocliente.cadastroclienteapp.service.ClienteService;
 import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,6 +20,10 @@ public class ClienteController {
 
     private ModelMapper modelMapper;
 
+    @InitBinder("cliente")
+    public  void initClienteBinder(WebDataBinder binder){
+        binder.setDisallowedFields("Id");
+    }
 
     public ClienteController(ClienteService service, ModelMapper modelMapper) {
         this.service = service;
