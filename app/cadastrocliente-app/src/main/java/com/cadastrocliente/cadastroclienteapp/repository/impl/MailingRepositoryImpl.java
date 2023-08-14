@@ -23,9 +23,10 @@ import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
 @Repository
 public class MailingRepositoryImpl implements MailingRepository {
 
-    public MailingRepositoryImpl(){
+    public MailingRepositoryImpl() {
 
     }
+
     @Autowired
     LoadProperties properties;
 
@@ -52,9 +53,16 @@ public class MailingRepositoryImpl implements MailingRepository {
                     .header("Authorization", stsToken.getToken())
                     .body(emailJson).when()
                     .post(properties.getUrlMailing());
-        } catch (BusinessExceptions | JsonProcessingException e) {
-            e.printStackTrace();
+            ReponseEmailDTO respEmail = response.then().contentType(ContentType.JSON).extract().body().as(ReponseEmailDTO.class);
+
+            return respEmail;
+        } catch (BusinessExceptions e) {
+            System.out.println(e);
+            throw new BusinessExceptions("erro ao enviar email!");
+        } catch (JsonProcessingException e)
+        {
+            System.out.println(e);
+            throw new BusinessExceptions("erro ao fazer o parse do json!");
         }
-        return null;
     }
 }

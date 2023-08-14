@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class LoadProperties {
 
-    @Value("${UrlSts}")
+    @Value("${urlSts}")
     private String urlSts;
 
     @Value("${xMathFlowId}")

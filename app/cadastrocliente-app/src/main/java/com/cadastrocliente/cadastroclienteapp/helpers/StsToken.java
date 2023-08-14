@@ -5,7 +5,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.specification.ProxySpecification;
 import lombok.Data;
 
-import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
 
 @Data
