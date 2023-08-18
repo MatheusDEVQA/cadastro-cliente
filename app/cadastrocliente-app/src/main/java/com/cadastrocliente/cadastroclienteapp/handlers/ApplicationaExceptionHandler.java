@@ -21,7 +21,7 @@ public class ApplicationaExceptionHandler {
 
     }
 
-    @InitBinder("")
+    @InitBinder("internalErrorException")
     protected void initInternalErrorExceptionBinder(WebDataBinder binder) {
         binder.setDisallowedFields("detailMessage");
     }
@@ -35,12 +35,13 @@ public class ApplicationaExceptionHandler {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(BusinessExceptions.class)
-    public ApiErrorsDTO businessExceptionHandler(BusinessExceptions businessExceptions){
+    public ApiErrorsDTO businessExceptionHandler(BusinessExceptions businessExceptions) {
         return new ApiErrorsDTO(businessExceptions);
     }
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(InternalErrorException.class)
-    public ApiErrorsDTO internalErrorExceptionHandler(InternalErrorException internalErrorException){
+    public ApiErrorsDTO internalErrorExceptionHandler(InternalErrorException internalErrorException) {
         return new ApiErrorsDTO(internalErrorException);
     }
 }

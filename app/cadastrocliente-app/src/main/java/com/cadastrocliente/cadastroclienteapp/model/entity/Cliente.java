@@ -33,7 +33,7 @@ public class Cliente {
     @Email(message = "Formato de email incorreto")
     private String usuario;
 
-    @NotBlank(message = "")
+    @NotBlank(message = "A cidade é obrigatória!")
     private String cidade;
 
     @NotBlank(message = "")
