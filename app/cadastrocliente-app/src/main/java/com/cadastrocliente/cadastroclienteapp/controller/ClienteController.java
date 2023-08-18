@@ -30,7 +30,7 @@ public class ClienteController {
         this.modelMapper = modelMapper;
     }
 
-    @PostMapping("/cliente")
+    @PostMapping("/clientes")
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO createCliente(@RequestBody @Valid ClienteDTO cliente) {
         Cliente entity = modelMapper.map(cliente, Cliente.class);
