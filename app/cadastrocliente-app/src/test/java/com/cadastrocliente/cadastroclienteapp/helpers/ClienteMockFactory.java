@@ -20,5 +20,8 @@ public class ClienteMockFactory {
     public static  Cliente clienteCadastradoMathId9(){
         return definirMath().id(9).build();
     }
+    public static  Cliente clienteCadastradoMathId10(){
+        return definirMath().id(10).build();
+    }
 
 }

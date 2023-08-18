@@ -21,4 +21,8 @@ public class ClienteDTOMockFactory {
         return definirMath().id(9).build();
     }
 
+    public static ClienteDTO clienteCdastradoMathId10(){
+        return definirMath().id(10).build();
+    }
+
 }
